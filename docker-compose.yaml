@@ -10,7 +10,8 @@ services:
         build:
             dockerfile: ./php/Dockerfile
         volumes:
-            - ./app:/app
+            - /app/vendor
+            - ./app:/app # this is only actually needed for development
     db:
         image: mysql:8.0
         volumes:

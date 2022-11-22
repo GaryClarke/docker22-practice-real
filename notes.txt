@@ -1,0 +1,6 @@
+add-composer
+- Add composer config to php/Dockerfile
+- Add composer.json
+- Shell into container and show vendor missing
+- Pin vendor and try again
+- Explain considerations - plan to create docker-compose.dev.yaml
