@@ -1,4 +1,5 @@
 add-composer
+- Have app running
 - Add composer config to php/Dockerfile
 - Add composer.json
 - Shell into container and show vendor missing
