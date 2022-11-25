@@ -5,3 +5,13 @@ add-composer
 - Shell into container and show vendor missing
 - Pin vendor and try again
 - Explain considerations - plan to create docker-compose.dev.yaml
+
+environment-variables
+- composer install --ignore-platform-reqs
+- show Dockerfile ignores dev dependencies
+- composer dump-autoload
+- show dev dependencies inside container
+- add src files and explain branch
+- Add env vars to docker compose and demo
+- Add env vars to .env file and demo
+- Explain how to use alternative --env-file like so: docker compose --env-file ./config/.env.dev config
