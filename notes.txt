@@ -15,3 +15,10 @@ environment-variables
 - Add env vars to docker compose and demo
 - Add env vars to .env file and demo
 - Explain how to use alternative --env-file like so: docker compose --env-file ./config/.env.dev config
+
+add-redis
+- add redis to docker compose
+- spin up docker compose and check port
+- add environment variables
+- add source code
+- test in browser
