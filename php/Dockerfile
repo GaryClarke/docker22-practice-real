@@ -1,8 +1,10 @@
 FROM php:8.1-fpm-alpine as app
 
-# docker-php-ext-install is conveniently provided as part of the official PHP package and allows us to install PHP extensions, we'll need pdo and pdo_mysql
+# Useful PHP extension installer image, copy binary into your container
 COPY --from=mlocati/php-extension-installer /usr/bin/install-php-extensions /usr/local/bin/
 
+# Install php extensions
+# exit on errors, exit on unset variables, print every command as it is executed
 RUN set -eux; \
     install-php-extensions pdo pdo_mysql;
 
@@ -41,10 +43,13 @@ RUN composer dump-autoload --optimize
 # https://docs.docker.com/compose/compose-file/#target
 FROM app AS app_dev
 
+# Xdebug has different modes / functionalities. We can default to 'off' and set to 'debug'
+# when we run docker compose up if we need it
 ENV XDEBUG_MODE=off
 
-# COPY --link is a new BuildKit feature which could substantially accelerate your Docker image builds. It works by copying files into independent image layers that don’t rely on the presence of their predecessors. You can add new content to images without the base image even existing on your system.
+# Copy xdebug config file into container
 COPY ./php/conf.d/xdebug.ini /usr/local/etc/php/conf.d/xdebug.ini
 
+# Install xdebug
 RUN set -eux; \
 	install-php-extensions xdebug

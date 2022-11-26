@@ -22,3 +22,20 @@ add-redis
 - add environment variables
 - add source code
 - test in browser
+
+add-xdebug
+- update Dockerfile (have commands ready)
+
+# Useful PHP extension installer image, copy binary into your container
+COPY --from=mlocati/php-extension-installer /usr/bin/install-php-extensions /usr/local/bin/
+
+# Install php extensions
+# exit on errors, exit on unset variables, print every command as it is executed
+RUN set -eux; \
+    install-php-extensions pdo pdo_mysql;
+
+- create xdebug.ini
+
+- add target to docker-compose
+- add XDEBUG_MODE env var to docker compose
+- add extra hosts to docker compose
