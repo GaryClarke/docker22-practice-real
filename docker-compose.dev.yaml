@@ -8,7 +8,7 @@ services:
     app:
         build:
             dockerfile: ./php/Dockerfile
-            target: "${BUILD_TARGET:-app}"
+            target: app
         volumes:
             - ./app:/var/www/html # this is only actually needed for development
             - ./php/conf.d/xdebug.ini:/usr/local/etc/php/conf.d/xdebug.ini:ro
