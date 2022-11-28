@@ -39,3 +39,9 @@ RUN set -eux; \
 - add target to docker-compose
 - add XDEBUG_MODE env var to docker compose
 - add extra hosts to docker compose
+
+# Pushing to registry
+
+- docker build --target app -t garyclarke/php-composer:1.0 -f ./php/Dockerfile .
+- docker images
+- docker push garyclarke/php-composer:1.0
